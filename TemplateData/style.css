@@ -1,0 +1,21 @@
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #FFF6E0; }
+body { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+
+/* 휴대폰: 화면 가득. 게임 UI가 화면 비율에 맞춰 늘어난다(Canvas Scaler Expand) */
+#unity-container { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+#unity-canvas { width: 100%; height: 100%; display: block; background: #FFF6E0; outline: none; }
+
+/* 가로가 넓은 화면(PC): 세로 게임이라 가운데 3:5 세로 틀 안에 */
+@media (min-aspect-ratio: 3/4) {
+  #unity-canvas { width: auto; height: 100%; aspect-ratio: 3 / 5; max-width: 100%; box-shadow: 0 0 40px rgba(0, 0, 0, 0.12); }
+}
+
+#unity-loading { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 16px; font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; color: #6B5B45; }
+#unity-logo { width: 120px; height: 120px; border-radius: 28px; image-rendering: pixelated; }
+#unity-progress { width: 180px; height: 12px; border-radius: 6px; background: #EADFC6; overflow: hidden; }
+#unity-progress-full { width: 0%; height: 100%; background: #5FCFAE; transition: width 0.2s; }
+#unity-loading-text { font-size: 15px; }
+
+#unity-warning { position: absolute; left: 50%; top: 5%; transform: translateX(-50%); display: none; max-width: 90%; font-family: sans-serif; font-size: 14px; }
+#unity-warning div { background: #FFF; padding: 10px; border-radius: 8px; margin-bottom: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+#unity-warning div.error { background: #D9443A; color: #FFF; }
